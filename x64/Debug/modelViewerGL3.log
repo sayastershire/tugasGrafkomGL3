@@ -1,0 +1,3 @@
+﻿  modelViewer.cpp
+C:\Users\aljan\Projects\source\modelViewerGL3\modelViewerGL3\master.h(12,33): warning C4305: 'initializing': truncation from 'double' to 'const float'
+  modelViewerGL3.vcxproj -> C:\Users\aljan\Projects\source\modelViewerGL3\x64\Debug\modelViewerGL3.exe
