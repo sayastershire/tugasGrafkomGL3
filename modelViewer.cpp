@@ -38,11 +38,6 @@ int main() {
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(gVertexBufferData), gVertexBufferData, GL_STATIC_DRAW);
 
-	GLuint colorbuffer;
-	glGenBuffers(1, &colorbuffer);
-	glBindBuffer(GL_ARRAY_BUFFER, colorbuffer);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(gColorBufferData), gColorBufferData, GL_STATIC_DRAW);
-
 	// Vertex Array Object - after context creation
 	GLuint VertexArrayID;
 	glGenVertexArrays(1, &VertexArrayID);
@@ -55,6 +50,23 @@ int main() {
 
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 	do {
+		// Color abstraction
+		if (theta <= 60.05f || theta >= 104.95f)	
+			for (int i = 0; i < 12 * 3; i++) {
+				gColorBufferData[3 * i + 0] = static_cast<GLfloat>(rand()) / static_cast<GLfloat>(RAND_MAX);
+				gColorBufferData[3 * i + 1] = static_cast<GLfloat>(rand()) / static_cast<GLfloat>(RAND_MAX);
+				gColorBufferData[3 * i + 2] = static_cast<GLfloat>(rand()) / static_cast<GLfloat>(RAND_MAX);
+			};
+
+		// Color buffer binding is put in the loop so that the color may change on execution.
+		GLuint colorbuffer;
+		glGenBuffers(1, &colorbuffer);
+		glBindBuffer(GL_ARRAY_BUFFER, colorbuffer);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(gColorBufferData), gColorBufferData, GL_STATIC_DRAW);
+
+		// Before MVP matrix: We need to initialise mouse position and displacement so that we can apply it to the camera.
+		
+
 		// Projection matrix : 90° Field of View, aspect ratio depends on window, display range : 0.1 unit <-> 100 units
 		glm::mat4 Projection = glm::perspective(glm::radians(theta), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
 

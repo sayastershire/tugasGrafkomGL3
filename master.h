@@ -12,7 +12,7 @@ constexpr int HEIGHT = 768;
 constexpr float addValue = 0.005;
 
 using namespace glm;
-static const GLfloat gVertexBufferData[] = {
+GLfloat gVertexBufferData[] = {
 	-1.0f,-1.0f,-1.0f, // triangle 1 : begin
 	-1.0f,-1.0f, 1.0f,
 	-1.0f, 1.0f, 1.0f, // triangle 1 : end
@@ -51,7 +51,7 @@ static const GLfloat gVertexBufferData[] = {
 	1.0f,-1.0f, 1.0f
 };
 
-static const GLfloat gColorBufferData[] = {
+GLfloat gColorBufferData[] = {
 	0.583f,  0.771f,  0.014f,
 	0.609f,  0.115f,  0.436f,
 	0.327f,  0.483f,  0.844f,
@@ -89,3 +89,11 @@ static const GLfloat gColorBufferData[] = {
 	0.820f,  0.883f,  0.371f,
 	0.982f,  0.099f,  0.879f
 };
+
+int xpos, ypos;
+vec3 position = vec3(0, 0, 5);
+float horizontalAngle = 3.14f,
+verticalAngle = 0.0f,
+initialFoV = 45.0f,
+speed = 3.0f,
+mouseSpeed = 0.005f;
